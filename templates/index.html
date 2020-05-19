@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>G1B - Simulation Redshift</title>
+        <link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}">
+        <link href="{{ url_for('static',     filename='index.css') }}" rel="stylesheet">
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="{{ url_for('static',     filename='index.js') }}"></script>
+    </head>
+
+    <body>
+        <div id="main-container" class="container">
+            <div id="pres-container" class="container">
+                <h1>Simulation du Redshift gravitationnel</h1>
+            </div>
+            <div id="sim-container" class="container">
+              <div id="sim-controllers">
+                <div class="controller">
+                  <label>Masse du corps massif (en milliard de Masse Solaire)</label>
+                  <input type="text" name="mass" value="1" />
+                  <div class="slider" name="mass" min="1" max="20"></div>
+                </div>
+                </br>
+                <div class="controller">
+                  <label>Rayon du corps massif (en km)</label>
+                  <input type="text" name="radius" value="75000000" />
+                  <div class="slider" name="radius" min="0" max="150000000"></div>
+                </div>
+                </br>
+                <div class="controller">
+                  <label>Distance à la surface du corps massif (en km)</label>
+                  <input type="text" name="distance" value="75000000" />
+                  <div class="slider" name="distance" min="0" max="150000000"></div>
+                </div>
+              </div>
+              <div id="sim-display">
+                <h1>Redshift correspondant</h1>
+                <div id="redshift"></div>
+              </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </body>
+</html>
