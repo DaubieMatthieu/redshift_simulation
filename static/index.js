@@ -7,43 +7,43 @@ $(document).ready(function() {
     var min=parseInt(slider.attr("min"));
     var value=parseInt(input.attr('value'));
     var name=slider.attr("name");
-    if (name!="distancemax" && name!="distancemin") {
-      slide=function (event, ui) {
-        input.val(ui.value);
-        getRedshift(displayRedshift);
-      }
-    } else {
-      slide=function (event, ui) {
-        input.val(ui.value);
-      }
-    }
+    step=1;
+    if ((max-min)/step>50) {step=(max-min)/50;}
     slider.slider({
       range: "max",
       min: min,
       max: max,
+      step: step,
       value: value,
-      slide: slide
+      slide: function (event, ui) {
+        input.val(ui.value);
+        getRedshift(displayRedshift);
+        getRedshiftGradient(displayRedshiftGradient);
+      }
     });
     input.change(function() {
       slider.slider("value", $(this).val());
+      getRedshift(displayRedshift);
+      getRedshiftGradient(displayRedshiftGradient);
     });
   })
   $("#displayRedshiftGradient").click(function () {
     getRedshiftGradient(displayRedshiftGradient);
   });
   getRedshift(displayRedshift);
+  getRedshiftGradient(displayRedshiftGradient);
 });
 
 function displayRedshift(response) {
   data=getData();
   response=JSON.parse(response);
-  originalFrequency=parseInt(data["frequency"]);
-  shiftedFrequency=response["shifted_frequency"];
-  $('#original-frequency').html(JSON.stringify(originalFrequency));
-  $('#original-frequency-color').css({background:RGBAToHexA(wavelengthToColor(originalFrequency))});
+  originalWavelength=parseInt(data["wavelength"]);
+  shiftedWavelength=response["shifted_wavelength"];
+  $('#original-wavelength').html(JSON.stringify(originalWavelength));
+  $('#original-wavelength-color').css({background:RGBAToHexA(wavelengthToColor(originalWavelength))});
   $('#redshift-value').html(JSON.stringify(response["redshift"]));
-  $('#shifted-frequency').html(JSON.stringify(shiftedFrequency));
-  $('#shifted-frequency-color').css({background:RGBAToHexA(wavelengthToColor(shiftedFrequency))});
+  $('#shifted-wavelength').html(JSON.stringify(shiftedWavelength));
+  $('#shifted-wavelength-color').css({background:RGBAToHexA(wavelengthToColor(shiftedWavelength))});
 }
 
 function getRedshift(callback=function(){}) {
@@ -81,14 +81,13 @@ function displayRedshiftGradient(response) {
   data=getData();
   distance=parseInt(data["distance"]);
   radius=parseInt(data["radius"]);
-  blackPercentage=parseInt(radius/(distance+radius)*100);
+  objectPercentage=parseInt(radius/(distance+radius)*100);
   background="radial-gradient(";
-  background+="black "+blackPercentage+"%"
-  shiftedFrequencies.forEach(function(shiftedFrequency) {
-    background+=","+RGBAToHexA(wavelengthToColor(shiftedFrequency))+" 1%"
+  background+="black "+objectPercentage+"%"
+  shiftedFrequencies.forEach(function(shiftedWavelength) {
+    background+=","+RGBAToHexA(wavelengthToColor(shiftedWavelength))
   });
   background+=")";
-  console.log(background)
   $('#redshift-gradient-display').css({
     background: background
   });

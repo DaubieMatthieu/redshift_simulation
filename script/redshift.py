@@ -11,26 +11,26 @@ def getDataFromJquery(data):
             maximum=int(data["distance"])*1000 #km to m
             valuesnumber=int(data["valuesnumber"]);
             step=int((maximum-minimum)/valuesnumber) #100values and km to m
-            frequency=int(data["frequency"])
+            wavelength=int(data["wavelength"])
             redshifts=getRedshiftList(mass,radius,minimum,maximum,step)
             shifted_frequencies=[]
             for redshift in redshifts:
                 if (isinstance(redshift,complex)):
-                    shifted_frequency=0
+                    shifted_wavelength=0
                 else:
-                    shifted_frequency=redshift*frequency
-                shifted_frequencies.append(shifted_frequency)
+                    shifted_wavelength=redshift*wavelength
+                shifted_frequencies.append(shifted_wavelength)
             return {"shifted_frequencies":shifted_frequencies}
         elif request=="getRedshift":
             distance=int(data["distance"])*1000 #km to m
-            frequency=int(data["frequency"])
+            wavelength=int(data["wavelength"])
             redshift=getRedshift(mass,radius+distance)
             if (isinstance(redshift,complex)):
-                shifted_frequency=0
+                shifted_wavelength=0
                 redshift=str(redshift)
             else:
-                shifted_frequency=frequency*redshift
-            return {"redshift":redshift,"shifted_frequency":shifted_frequency}
+                shifted_wavelength=wavelength*redshift
+            return {"redshift":redshift,"shifted_wavelength":shifted_wavelength}
         else:
             raise Exception("request error")
     except Exception as e:
@@ -51,4 +51,4 @@ def getRedshiftList(mass,radius,minimum,maximum,step):
     for distance in distances:
         redshift=getRedshift(mass,radius+distance)
         redshifts.append(redshift)
-    return(redshifts)
+    return redshifts
