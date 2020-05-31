@@ -37,7 +37,7 @@ def getDataFromJquery(data):
        return(str(e))
 
 def getRedshift(M,r):
-    #M object mass (kg), r distance between photonand object center (m)
+    #M object mass (kg), r distance between photon and object center (m)
     G=float(6.674*(10**-11))
     c=299792458
     z=(1-2*G*M/(r*c**2))**-0.5

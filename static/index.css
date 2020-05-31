@@ -52,3 +52,17 @@
   background-color: black;
   border-radius: 100%;
 }
+
+span.tooltip {
+  display:inline-block;
+  width:-webkit-calc(1em + 2px);
+  height:-webkit-calc(1em + 2px);
+  width:calc(1em + 2px);
+  height:calc(1em + 2px);
+  margin: 0 0.5em;
+  border-radius:100%;
+  text-align:center;
+  -webkit-box-shadow: 0 0 0.5em grey;
+  -moz-box-shadow: 0 0 0.5em grey;
+  box-shadow: 0 0 0.5em grey;
+}

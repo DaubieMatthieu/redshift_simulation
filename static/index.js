@@ -29,6 +29,7 @@ $(document).ready(function() {
   getRedshift();
   getRedshiftGradient();
   $("#autoGradient").click(toggleGradientAutoDisplay);
+  $(document).tooltip();
 });
 
 function toggleGradientAutoDisplay() {

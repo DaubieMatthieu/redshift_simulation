@@ -13,7 +13,10 @@
     <body>
         <div id="main-container" class="container">
             <div id="pres-container" class="container">
-                <h1>Simulation du Redshift gravitationnel</h1>
+                <h1>Simulation du Redshift gravitationnel ou effet Einstein</h1>
+                <span class="tooltip" title="Le redshift gravitationnel, aussi appelé effet Einstein
+                est le décalage de la longueur d'onde d'une onde électromagnétique sous l'effet d'un fort champ gravitationnel.
+                Cette simulation permet de visualiser cette effet, observable seulement autour d'ojets célestes très massifs."> ?</span>
             </div>
             <div id="sim-container" class="container">
               <div id="left-container">
@@ -21,6 +24,7 @@
                   <div class="controller">
                     <label>Masse du corps massif (en milliard de Masse Solaire)</label>
                     <input type="text" name="mass" value="1" />
+                    <span class="tooltip" title="La masse du soleil est estimée à 2x10³⁰kg."> ?</span>
                     <div class="slider" name="mass" min="1" max="20"></div>
                   </div>
                   </br>
@@ -42,12 +46,18 @@
                     <div class="slider" name="wavelength" min="380" max="780"></div>
                   </div>
                   </br>
-                  <input id="autoGradient" value=true type="checkbox"> Calcul auto de l'image</input>
+                  <input id="autoGradient" value=true type="checkbox"> Calcul automatique de l'image</input>
+                  <span class="tooltip" title="Le calcul de l'image prend un peu plus de temps que le calcul du redshift seul ci-dessous, si vous lancez trop souvent
+                  ce calcul ou que votre connexion internet est mauvaise vous risquez de surcharger le navigateur et votre expérience sera moins bonne.
+                  Vous pouvez désactiver le calcul automatique pour ne pas surcharger le navigateur pendant que vous réglez les paramètres de la simulation."> ?</span>
                   </br>
                   <button id="displayRedshiftGradient">Calculer le gradient</button>
                 </div>
                 <div id="redshift-display">
-                  <h1>Redshift correspondant</h1>
+                  <h1 style="display:inline-block">Redshift correspondant</h1>
+                  <span class="tooltip" title="On observe la différence de longueur d'onde d'une même onde électromagnétique, entre le point où elle est émise
+                  aux environs du corps massif (la distance au centre du corps est réglable ci-dessus) et le point où elle est observée (hors de l'influence du champ gravitationnel).
+                  Le ratio entre ces deux longueurs d'ondes et appelé le redshift."> ?</span><br>
                   <span>Longueur d'onde originale : </span><span id="original-wavelength"></span><span>nm </span><span class="wavelength-color" id="original-wavelength-color"></span>
                   <br>
                   <span>Valeur du Redshift : </span><span id="redshift-value"></span>
@@ -56,7 +66,14 @@
                 </div>
               </div>
               <div id="right-container">
-                <div id="redshift-gradient-display"></div>
+                <div id="redshift-gradient-display">
+                  <span class="tooltip" style="float:right;margin:5px" title="L'objet provoquant le redshift est représenté en noir au milieu
+                  (les caractéristiques de l'objet sont réglables dans le panel à gauche), on imagine que l'univers baigne dans une lumière colorée
+                  (dont la longueur d'onde est réglable dans le panel à gauche), on observe l'effet redshift sur cette lumière autour de l'objet
+                  jusqu'à la distance indiquée et réglable dans le panel de gauche.
+                  Une couleur blanche indique que la longueur d'onde de la lumière a été décalée au delà de 780nm et donc qu'elle n'est plus visible par les humains.
+                  Une couleur grise indique que la valeur du redshift est complexe, et on ne peut donc pas calculer la longueur d'onde percue."> ?</span>
+                </div>
               </div>
             </div>
         </div>
