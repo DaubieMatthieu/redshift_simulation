@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>G1B - Simulation Redshift</title>
+        <title>Simulation Effet Einstein</title>
         <link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}">
         <link href="{{ url_for('static',     filename='index.css') }}" rel="stylesheet">
         <meta charset="UTF-8">
@@ -24,7 +24,7 @@
                   <div class="controller">
                     <label>Masse du corps massif (en milliard de Masse Solaire)</label>
                     <input type="text" name="mass" value="1" />
-                    <span class="tooltip" title="La masse du soleil est estimée à 2x10³⁰kg."> ?</span>
+                    <span class="tooltip" title="La masse du soleil est estimée à 2x10³⁰kg, soit 334896 fois la masse de la Terre"> ?</span>
                     <div class="slider" name="mass" min="1" max="20"></div>
                   </div>
                   </br>
@@ -51,7 +51,7 @@
                   ce calcul ou que votre connexion internet est mauvaise vous risquez de surcharger le navigateur et votre expérience sera moins bonne.
                   Vous pouvez désactiver le calcul automatique pour ne pas surcharger le navigateur pendant que vous réglez les paramètres de la simulation."> ?</span>
                   </br>
-                  <button id="displayRedshiftGradient">Calculer le gradient</button>
+                  <button id="displayRedshiftGradient">Calculer l'image</button>
                 </div>
                 <div id="redshift-display">
                   <h1 style="display:inline-block">Redshift correspondant</h1>
@@ -77,5 +77,6 @@
               </div>
             </div>
         </div>
+        <footer>Simulation réalisée par le groupe G1B pour le module Sciences du Numérique - ISEP - 2019/2020</footer>
     </body>
 </html>
